@@ -12,14 +12,22 @@ namespace Studsharp
     using System;
     using System.Collections.Generic;
     
-    public partial class Member
+    public partial class Users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Users()
+        {
+            this.Student = new HashSet<Student>();
+            this.Teacher = new HashSet<Teacher>();
+        }
+    
         public int ID { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public Nullable<int> TeacherID { get; set; }
-        public string Role { get; set; }
     
-        public virtual Teacher Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Student { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Teacher> Teacher { get; set; }
     }
 }

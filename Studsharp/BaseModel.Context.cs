@@ -13,10 +13,10 @@ namespace Studsharp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StudyBaseEntities : DbContext
+    public partial class StudyDBEntities : DbContext
     {
-        public StudyBaseEntities()
-            : base("name=StudyBaseEntities")
+        public StudyDBEntities()
+            : base("name=StudyDBEntities")
         {
         }
     
@@ -28,10 +28,10 @@ namespace Studsharp
         public virtual DbSet<Discipline> Discipline { get; set; }
         public virtual DbSet<Evaluation> Evaluation { get; set; }
         public virtual DbSet<Group> Group { get; set; }
-        public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<Teacher_Discipline> Teacher_Discipline { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

@@ -32,9 +32,9 @@ namespace Studsharp
                 MessageBox.Show("Сначало введите пароль!");
                 return;
             }
-            using (var db = new StudyBaseEntities())
+            using (var db = new StudyDBEntities())
             {
-                var user = db.Member.AsNoTracking().FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordTb.Password);
+                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordTb.Password);
                 if (user == null)
                 {
                     MessageBox.Show("Неверный логин или пароль!");
@@ -42,6 +42,7 @@ namespace Studsharp
                 }
             }
             MessageBox.Show("Вы успешно авторизировались.");
+            Manager.MainFrame.Navigate(new GeneralPage());
         }
     }
 }
