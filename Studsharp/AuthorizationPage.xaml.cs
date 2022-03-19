@@ -40,9 +40,25 @@ namespace Studsharp
                     MessageBox.Show("Неверный логин или пароль!");
                     return;
                 }
-            }
-            MessageBox.Show("Вы успешно авторизировались.");
-            Manager.MainFrame.Navigate(new GeneralPage());
+                var teacher = db.Teacher.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);
+                if (teacher != null)
+                {
+                    MessageBox.Show("Вы успешно авторизировались, учитель.");
+                    Manager.MainFrame.Navigate(new GeneralPage());
+                    return;
+                }
+                var student = db.Student.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);
+                if (student != null)
+                {
+                    MessageBox.Show("Вы успешно авторизировались, студент.");
+                    Manager.MainFrame.Navigate(new GeneralStudentPage());
+                }
+                else
+                {
+                    MessageBox.Show("Ваш аккаунт не явлется подтвержденным.");
+                }
+                return;
+            } 
         }
     }
 }
