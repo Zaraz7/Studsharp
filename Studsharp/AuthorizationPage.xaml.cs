@@ -32,7 +32,7 @@ namespace Studsharp
                 MessageBox.Show("Сначало введите пароль!");
                 return;
             }
-            using (var db = new StudyDBEntities())
+            using (var db = new StudyBaseEntities())
             {
                 var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordTb.Password);
                 if (user == null)

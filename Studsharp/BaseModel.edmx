@@ -34,7 +34,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FistName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="Birth" Type="date" />
@@ -247,7 +247,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FistName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Birth" Type="DateTime" Precision="0" />
@@ -386,7 +386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="StudyDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="StudyBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Discipline" EntityType="Self.Discipline" />
           <EntitySet Name="Evaluation" EntityType="Self.Evaluation" />
           <EntitySet Name="Group" EntityType="Self.Group" />
@@ -429,7 +429,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище StudyBaseModelContainer" CdmEntityContainer="StudyDBEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище StudyBaseModelContainer" CdmEntityContainer="StudyBaseEntities">
           <EntitySetMapping Name="Discipline">
             <EntityTypeMapping TypeName="StudyBaseModel.Discipline">
               <MappingFragment StoreEntitySet="Discipline">
@@ -461,7 +461,7 @@
             <EntityTypeMapping TypeName="StudyBaseModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FistName" ColumnName="FistName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Birth" ColumnName="Birth" />

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Studsharp
 {
@@ -20,9 +21,25 @@ namespace Studsharp
     /// </summary>
     public partial class GeneralPage : Page
     {
+        static String GroupCode;
         public GeneralPage()
         {
             InitializeComponent();
+            GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
+            DisciplineCb.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
+
+            JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
+            
+        }
+
+        private void GroupCbSelected(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void DisciplineCbSelected(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

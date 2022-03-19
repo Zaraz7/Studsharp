@@ -19,9 +19,16 @@
             <RowDefinition Height="35"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="4">
+        <ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected"/>
+        <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected"/>
+        <DataGrid x:Name="JournalDg" Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn/>
+                <DataGridTextColumn Header="Время" Binding="{Binding DateReturn}"/>
+                <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Student.FirstName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Student.LastName}"/>
+                <DataGridTextColumn Header="Предмет" Binding="{Binding TDID}"/>
+                <DataGridTextColumn Header=" " Binding="{Binding Student.GroupCode}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

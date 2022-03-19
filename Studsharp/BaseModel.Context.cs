@@ -13,11 +13,22 @@ namespace Studsharp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StudyDBEntities : DbContext
+    public partial class StudyBaseEntities : DbContext
     {
-        public StudyDBEntities()
-            : base("name=StudyDBEntities")
+        // Добавляем приватное статичное поле, которое будет контекстом
+        private static StudyBaseEntities _context;
+
+
+        public StudyBaseEntities()
+            : base("name=StudyBaseEntities")
         {
+        }
+        // Добавляем метод получения экземпляра этого контекста
+        public static StudyBaseEntities GetContext()
+        {
+            if (_context == null)
+                _context = new StudyBaseEntities();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
