@@ -11,7 +11,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Background="#a8bf4c" Orientation="Horizontal">
+        <StackPanel Background="#E8D08F" Orientation="Horizontal">
             <Image HorizontalAlignment="Left" Source="Resources/icons8-book-48.png" Height="40" />
         </StackPanel>
         <TextBlock Text="Header" FontSize="20"/>

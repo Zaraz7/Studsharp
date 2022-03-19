@@ -15,7 +15,6 @@ namespace Studsharp
     public partial class Evaluation
     {
         public int ID { get; set; }
-        public Nullable<byte> Semestr { get; set; }
         public Nullable<System.DateTime> DateReturn { get; set; }
         public Nullable<byte> Eval { get; set; }
         public Nullable<int> StudentID { get; set; }

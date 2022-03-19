@@ -20,9 +20,8 @@ namespace Studsharp
             this.Student = new HashSet<Student>();
         }
     
-        public int ID { get; set; }
         public string Code { get; set; }
-        public Nullable<byte> YearStart { get; set; }
+        public Nullable<short> YearStart { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Student { get; set; }

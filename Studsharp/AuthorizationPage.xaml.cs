@@ -34,14 +34,31 @@ namespace Studsharp
             }
             using (var db = new StudyBaseEntities())
             {
-                var user = db.Member.AsNoTracking().FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordTb.Password);
+                var user = db.Users.AsNoTracking().FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordTb.Password);
                 if (user == null)
                 {
                     MessageBox.Show("Неверный логин или пароль!");
                     return;
                 }
-            }
-            MessageBox.Show("Вы успешно авторизировались.");
+                var teacher = db.Teacher.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);
+                if (teacher != null)
+                {
+                    MessageBox.Show("Вы успешно авторизировались, учитель.");
+                    Manager.MainFrame.Navigate(new GeneralPage());
+                    return;
+                }
+                var student = db.Student.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);
+                if (student != null)
+                {
+                    MessageBox.Show("Вы успешно авторизировались, студент.");
+                    Manager.MainFrame.Navigate(new GeneralStudentPage());
+                }
+                else
+                {
+                    MessageBox.Show("Ваш аккаунт не явлется подтвержденным.");
+                }
+                return;
+            } 
         }
     }
 }
