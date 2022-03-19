@@ -92,9 +92,6 @@
     <Compile Include="GeneralPage.xaml.cs">
       <DependentUpon>GeneralPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GeneralStudentPage.xaml.cs">
-      <DependentUpon>GeneralStudentPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Group.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
@@ -118,10 +115,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GeneralPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GeneralStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
