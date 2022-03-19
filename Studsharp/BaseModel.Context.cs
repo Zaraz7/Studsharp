@@ -15,9 +15,20 @@ namespace Studsharp
     
     public partial class StudyBaseEntities : DbContext
     {
+        // Добавляем приватное статичное поле, которое будет контекстом
+        private static StudyBaseEntities _context;
+
+
         public StudyBaseEntities()
             : base("name=StudyBaseEntities")
         {
+        }
+        // Добавляем метод получения экземпляра этого контекста
+        public static StudyBaseEntities GetContext()
+        {
+            if (_context == null)
+                _context = new StudyBaseEntities();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,10 +39,10 @@ namespace Studsharp
         public virtual DbSet<Discipline> Discipline { get; set; }
         public virtual DbSet<Evaluation> Evaluation { get; set; }
         public virtual DbSet<Group> Group { get; set; }
-        public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<Teacher_Discipline> Teacher_Discipline { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

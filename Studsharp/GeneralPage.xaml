@@ -1,0 +1,36 @@
+﻿<Page x:Class="Studsharp.GeneralPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Studsharp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GeneralPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Margin="5,5,10,5"/>
+        <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected" Grid.ColumnSpan="2" Margin="10,5"/>
+        <DataGrid x:Name="JournalDg" Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Время" Binding="{Binding DateReturn}"/>
+                <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Student.FirstName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Student.LastName}"/>
+                <DataGridTextColumn Header="Предмет" Binding="{Binding TDID}"/>
+                <DataGridTextColumn Header=" " Binding="{Binding Student.GroupCode}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Column="3" HorizontalAlignment="Left"><TextBlock Text="Войти" Foreground="#fff"/></Button>
+    </Grid>
+</Page>
