@@ -23,6 +23,13 @@ namespace Studsharp
         public GeneralStudentPage()
         {
             InitializeComponent();
+            DisciplineCb.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
+
+            JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
+        }
+        private void DisciplineCbSelected(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

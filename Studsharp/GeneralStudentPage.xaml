@@ -9,6 +9,24 @@
       Title="GeneralStudentPage">
 
     <Grid>
-        <TextBlock Text="Пупка залупка"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="0" SelectionChanged="DisciplineCbSelected" Margin="10,5"/>
+        <Button Grid.Column="3" HorizontalAlignment="Left">
+            <TextBlock Text="Обновить" Foreground="#fff"/>
+        </Button>
+        <DataGrid x:Name="JournalDg" Grid.Row="1" Grid.ColumnSpan="2" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Время" Binding="{Binding DateReturn}"/>
+                <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}"/>
+                <DataGridTextColumn Header="Предмет" Binding="{Binding TDID}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
