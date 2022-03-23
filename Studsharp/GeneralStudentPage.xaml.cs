@@ -24,12 +24,22 @@ namespace Studsharp
         {
             InitializeComponent();
             DisciplineCb.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
+            DisciplineCb.SelectedIndex = 0;
 
-            JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
+            UpdateJournal();
+        }
+        private void UpdateJournal()
+        {
+            var CurrentJournal = StudyBaseEntities.GetContext().Evaluation.ToList();
+            /*
+            if (DisciplineCb.SelectedIndex > 0)
+                CurrentJournal = CurrentJournal.Where(p => p.Teacher_Discipline.DisciplineID(DisciplineCb.SelectedItem as Discipline)).toList;
+            */
+            JournalLv.ItemsSource = CurrentJournal;
         }
         private void DisciplineCbSelected(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
     }
 }

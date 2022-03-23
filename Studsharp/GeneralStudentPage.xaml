@@ -21,12 +21,21 @@
         <Button Grid.Column="3" HorizontalAlignment="Left">
             <TextBlock Text="Обновить" Foreground="#fff"/>
         </Button>
-        <DataGrid x:Name="JournalDg" Grid.Row="1" Grid.ColumnSpan="2" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Время" Binding="{Binding DateReturn}"/>
-                <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}"/>
-                <DataGridTextColumn Header="Предмет" Binding="{Binding TDID}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView Name="JournalLv" Grid.Row="1" Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Teacher_Discipline.Discipline.Name}" Margin="10,0" Grid.Column="0"/>
+                    <TextBlock Text="{Binding DateReturn}" Grid.Column="1"/>
+                    <TextBlock Text="{Binding Eval}" Grid.Column="2"/>
+                </Grid>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
