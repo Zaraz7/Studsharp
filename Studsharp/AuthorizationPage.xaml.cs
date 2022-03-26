@@ -61,5 +61,10 @@ namespace Studsharp
                 return;
             } 
         }
+
+        private void RegistrationClk(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new RegistrationPage());
+        }
     }
 }
