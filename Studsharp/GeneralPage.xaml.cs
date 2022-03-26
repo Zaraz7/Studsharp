@@ -21,31 +21,49 @@ namespace Studsharp
     /// </summary>
     public partial class GeneralPage : Page
     {
-        static String GroupCode;
         public GeneralPage()
         {
             InitializeComponent();
-            GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
-            DisciplineCb.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
-
             JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
 
-            
-        }
-        private void UpdateJournal() {
-            var currentJournal = StudyBaseEntities.GetContext().Evaluation.ToList();
+            var allDiscipline = StudyBaseEntities.GetContext().Discipline.ToList();
+            allDiscipline.Insert(0, new Discipline { Name = "Все предметы" });
 
-           // if (.SelectedIndex > 0)
+            DisciplineCb.ItemsSource = allDiscipline;
+            DisciplineCb.SelectedIndex = 0;
+
+            var allGroups = StudyBaseEntities.GetContext().Group.ToList();
+            allGroups.Insert(0, new Group { Code = "Все группы" });
+
+            GroupCb.ItemsSource = allGroups;
+            GroupCb.SelectedIndex = 0;
+
+            UpdateJournal();
+        }
+
+        private void UpdateJournal()
+        {
+            var CurrentJournal = StudyBaseEntities.GetContext().Evaluation.ToList();
+
+            if (DisciplineCb.SelectedIndex > 0)
+            {
+                CurrentJournal = CurrentJournal.Where(p => p.Teacher_Discipline.DisciplineID == (DisciplineCb.SelectedItem as Discipline).ID).ToList();
+            }
+            if (GroupCb.SelectedIndex > 0)
+            {
+                CurrentJournal = CurrentJournal.Where(p => p.Student.GroupCode == (GroupCb.SelectedItem as Group).Code).ToList();
+            }
+            JournalDg.ItemsSource = CurrentJournal;
         }
 
         private void GroupCbSelected(object sender, SelectionChangedEventArgs e)
         {
-
+            UpdateJournal();
         }
 
         private void DisciplineCbSelected(object sender, SelectionChangedEventArgs e)
         {
-
+            UpdateJournal();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -58,9 +76,9 @@ namespace Studsharp
 
         }
 
-        private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage());
         }
     }
 }

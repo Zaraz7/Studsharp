@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GeneralPage">
-      
+
     <Grid>
         <!--
         <Grid.ColumnDefinitions>
@@ -25,19 +25,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
+            <!-- <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Введите оценку для поиска:" Width="175" TextAlignment="Right"></TextBlock>
                 <TextBox Width="225" Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged"></TextBox>
-            </StackPanel>
+            </StackPanel>-->
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Выберите группу и предмет:" Width="175" TextAlignment="Right"></TextBlock>
                 <ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Margin="5,5,10,5"/>
                 <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected" Grid.ColumnSpan="2" Margin="10,5"/>
             </StackPanel>
-            <!--<ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Margin="5,5,10,5"/>
-            <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected" Grid.ColumnSpan="2" Margin="10,5"/>
-            -->
-            <DataGrid x:Name="JournalDg" Grid.Row="1" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="JournalDg" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Время" Binding="{Binding DateReturn}"/>
                     <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}"/>
@@ -47,11 +44,20 @@
                     <DataGridTextColumn Header="Группа" Binding="{Binding Student.GroupCode}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <!--
-            <Button Grid.Column="3" HorizontalAlignment="Left">
-                <TextBlock Text="Войти" Foreground="#fff"/>
-            </Button>-->
+            <!--<ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Margin="5,5,10,5"/>
+            <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected" Grid.ColumnSpan="2" Margin="10,5"/>
+            -->
+            <Button HorizontalAlignment="Left" Margin="180,0,0,320" Grid.Row="1">
+                <TextBlock Text="Изменить" Foreground="#fff"/>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="20,0,0,320" Grid.Row="1">
+                <TextBlock Text="Удалить" Foreground="#fff"/>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="20,0,0,320" Grid.Row="1" Click="Button_Click_1">
+                <TextBlock Text="Добавить" Foreground="#fff"/>
+            </Button>
         </WrapPanel>
+        
 
     </Grid>
 </Page>
