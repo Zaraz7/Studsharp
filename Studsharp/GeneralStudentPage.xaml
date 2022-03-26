@@ -18,16 +18,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="0" SelectionChanged="DisciplineCbSelected" Margin="10,5"/>
-        <Button Grid.Column="3" HorizontalAlignment="Left">
-            <TextBlock Text="Обновить" Foreground="#fff"/>
-        </Button>
         <TextBlock Text="ds" x:Name="FLNameTb" Grid.Column="1"/>
-        <DataGrid Name="JournalLv" Grid.Row="1" Grid.ColumnSpan="2">
+        <DataGrid Name="JournalLv" Grid.Row="1" Grid.ColumnSpan="2" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Дисциплина" Binding="{Binding Teacher_Discipline.Discipline.Name}"/>
-                <DataGridTextColumn Header="Дисциплина" Binding="{Binding Teacher_Discipline.Discipline.Name}"/>
-                <DataGridTextColumn Header="Дисциплина" Binding="{Binding DateReturn}"/>
-                <DataGridTextColumn Header="Дисциплина" Binding="{Binding Eval}" />
+                <DataGridTextColumn Header="Дата" Binding="{Binding DateReturn}"/>
+                <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}" />
+                <DataGridTextColumn Header="Преподователь" Binding="{Binding Teacher_Discipline.Teacher.FirstName}"/>
+                <DataGridTextColumn Header=" " Binding="{Binding Teacher_Discipline.Teacher.LastName}"/>
                 </DataGrid.Columns>
         </DataGrid>
     </Grid>
