@@ -6,10 +6,12 @@
     <!-- #000 #442a8c #E8D08F #fff-->
     <Application.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="Height" Value="25"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style TargetType="PasswordBox">
-            <Setter Property="Height" Value="25"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="#442a8c"/>

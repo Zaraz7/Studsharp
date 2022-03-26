@@ -9,6 +9,34 @@
       Title="GeneralStudentPage">
 
     <Grid>
-        <TextBlock Text="Пупка залупка"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="0" SelectionChanged="DisciplineCbSelected" Margin="10,5"/>
+        <Button Grid.Column="3" HorizontalAlignment="Left">
+            <TextBlock Text="Обновить" Foreground="#fff"/>
+        </Button>
+        <TextBlock Text="ds" x:Name="FLNameTb" Grid.Column="1"/>
+        <ListView Name="JournalLv" Grid.Row="1" Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Teacher_Discipline.Discipline.Name}" Margin="10,0" Grid.Column="0"/>
+                        <TextBlock Text="{Binding DateReturn}" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Eval}" Grid.Column="2"/>
+                </Grid>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

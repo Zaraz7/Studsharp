@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace Studsharp
 {
@@ -20,9 +22,34 @@ namespace Studsharp
     /// </summary>
     public partial class GeneralStudentPage : Page
     {
-        public GeneralStudentPage()
+        private Student _currentStudent = new Student();
+        public GeneralStudentPage(Student sessionStudent, string fullName)
         {
             InitializeComponent();
+            _currentStudent = sessionStudent;
+
+            var allDiscipline = StudyBaseEntities.GetContext().Discipline.ToList();
+            allDiscipline.Insert(0, new Discipline{ Name = "Все предметы" });
+            
+            DisciplineCb.ItemsSource = allDiscipline;
+            DisciplineCb.SelectedIndex = 0;
+            FLNameTb.Text = fullName;
+
+            UpdateJournal();
+        }
+        private void UpdateJournal()
+        {
+            var CurrentJournal = StudyBaseEntities.GetContext().Evaluation.ToList();
+            var db = new StudyBaseEntities();
+
+
+            Debug.WriteLine(_currentStudent.ToString());
+            Debug.WriteLine(_currentStudent.ID.ToString());
+            JournalLv.ItemsSource = CurrentJournal;
+        }
+        private void DisciplineCbSelected(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

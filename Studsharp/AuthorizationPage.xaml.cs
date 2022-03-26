@@ -50,8 +50,9 @@ namespace Studsharp
                 var student = db.Student.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);
                 if (student != null)
                 {
-                    MessageBox.Show("Вы успешно авторизировались, студент.");
-                    Manager.MainFrame.Navigate(new GeneralStudentPage());
+                    string fullName = student.FirstName + " " + student.LastName;
+                    MessageBox.Show($"Вы успешно авторизировались, {fullName}.");
+                    Manager.MainFrame.Navigate(new GeneralStudentPage(student, fullName));
                 }
                 else
                 {
