@@ -16,9 +16,9 @@ namespace Studsharp
     {
         public int ID { get; set; }
         public Nullable<System.DateTime> DateReturn { get; set; }
-        public Nullable<byte> Eval { get; set; }
-        public Nullable<int> StudentID { get; set; }
-        public Nullable<int> TDID { get; set; }
+        public byte Eval { get; set; }
+        public int StudentID { get; set; }
+        public int TDID { get; set; }
     
         public virtual Student Student { get; set; }
         public virtual Teacher_Discipline Teacher_Discipline { get; set; }
