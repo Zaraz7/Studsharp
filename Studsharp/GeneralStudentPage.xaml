@@ -22,21 +22,13 @@
             <TextBlock Text="Обновить" Foreground="#fff"/>
         </Button>
         <TextBlock Text="ds" x:Name="FLNameTb" Grid.Column="1"/>
-        <ListView Name="JournalLv" Grid.Row="1" Grid.ColumnSpan="2">
-            <ListView.ItemTemplate>
-            <DataTemplate>
-                <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="20"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Teacher_Discipline.Discipline.Name}" Margin="10,0" Grid.Column="0"/>
-                        <TextBlock Text="{Binding DateReturn}" Grid.Column="1"/>
-                        <TextBlock Text="{Binding Eval}" Grid.Column="2"/>
-                </Grid>
-            </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <DataGrid Name="JournalLv" Grid.Row="1" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дисциплина" Binding="{Binding Teacher_Discipline.Discipline.Name}"/>
+                <DataGridTextColumn Header="Дисциплина" Binding="{Binding Teacher_Discipline.Discipline.Name}"/>
+                <DataGridTextColumn Header="Дисциплина" Binding="{Binding DateReturn}"/>
+                <DataGridTextColumn Header="Дисциплина" Binding="{Binding Eval}" />
+                </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

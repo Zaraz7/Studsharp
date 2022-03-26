@@ -40,16 +40,26 @@ namespace Studsharp
         private void UpdateJournal()
         {
             var CurrentJournal = StudyBaseEntities.GetContext().Evaluation.ToList();
-            var db = new StudyBaseEntities();
+            CurrentJournal = CurrentJournal.Where(p => p.StudentID == _currentStudent.ID).ToList();
+            if (DisciplineCb.SelectedIndex > 0) {
+                Debug.WriteLine("--------");
+                
+                var selectedItem = DisciplineCb.SelectedItem as Discipline;
+                Debug.WriteLine(selectedItem);
+                Debug.WriteLine(selectedItem.ID);
+                Debug.WriteLine(selectedItem.ID == 3);
 
-
+                Debug.WriteLine("--------");
+                
+                CurrentJournal = CurrentJournal.Where(p => p.Teacher_Discipline.DisciplineID == (DisciplineCb.SelectedItem as Discipline).ID).ToList();
+            }
             Debug.WriteLine(_currentStudent.ToString());
             Debug.WriteLine(_currentStudent.ID.ToString());
             JournalLv.ItemsSource = CurrentJournal;
         }
         private void DisciplineCbSelected(object sender, SelectionChangedEventArgs e)
         {
-            
+            UpdateJournal();
         }
     }
 }
