@@ -29,7 +29,13 @@ namespace Studsharp
             DisciplineCb.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
 
             JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
+
             
+        }
+        private void UpdateJournal() {
+            var currentJournal = StudyBaseEntities.GetContext().Evaluation.ToList();
+
+           // if (.SelectedIndex > 0)
         }
 
         private void GroupCbSelected(object sender, SelectionChangedEventArgs e)
@@ -43,6 +49,16 @@ namespace Studsharp
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
