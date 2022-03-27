@@ -85,7 +85,7 @@ namespace Studsharp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPage(sessionTeacher));
+            Manager.MainFrame.Navigate(new AddEditPage(sessionTeacher, null));
         }
     }
 }

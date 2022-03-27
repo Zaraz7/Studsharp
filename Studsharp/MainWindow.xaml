@@ -14,7 +14,7 @@
         <StackPanel Background="#E8D08F" Orientation="Horizontal">
             <Image HorizontalAlignment="Left" Source="Resources/icons8-book-48.png" Height="40" />
         </StackPanel>
-        <TextBlock Text="Header" FontSize="20"/>
+        <TextBlock Text="StudSharp" FontSize="20"/>
         <!-- Главынй фрейм, где будут перелистываться остальные страницы-->
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>

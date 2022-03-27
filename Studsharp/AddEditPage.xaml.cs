@@ -22,9 +22,12 @@ namespace Studsharp
     public partial class AddEditPage : Page
     {
         private Teacher sessionTeacher = new Teacher();
-        public AddEditPage(Teacher _sessionTeacher)
+        private Evaluation evaluation = new Evaluation();
+        public AddEditPage(Teacher _sessionTeacher, Evaluation _evaluation)
         {
             sessionTeacher = _sessionTeacher;
+            if (_evaluation != null)
+                evaluation = _evaluation;
 
             InitializeComponent();
             var disciplineList = StudyBaseEntities.GetContext().Teacher_Discipline.ToList();
@@ -34,6 +37,7 @@ namespace Studsharp
             GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
 
             ReturnDp.SelectedDate = DateTime.Now;
+            
         }
 
 
@@ -47,13 +51,15 @@ namespace Studsharp
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+
+
             Debug.WriteLine(ReturnDp.SelectedDate);
             Debug.WriteLine(EvalTb.Text);
             Debug.WriteLine((ComboDiscipline.SelectedItem as Teacher_Discipline).ID);
             Debug.WriteLine((ComboStudent.SelectedItem as Student).ID);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnAbort_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new GeneralPage(sessionTeacher));
         }
