@@ -30,13 +30,24 @@
         <Button Click="AuthoriClk" Grid.Column="1">
             <TextBlock Text="Вход" Foreground="#fff"/>
         </Button>
-        
-        
         <TextBlock Text="Регистрация" Grid.Column="2"/>
+
+        <TextBlock Text="Фамилия" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Text="Имя" Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Text="Очество" Grid.Column="1" Grid.Row="4"/>
+        <TextBlock Text="Логин" Grid.Column="1" Grid.Row="5"/>
         <TextBlock Text="Логин" Grid.Column="1" Grid.Row="6"/>
         <TextBlock Text="Пароль" Grid.Column="1" Grid.Row="7"/>
+
+        <TextBox x:Name="FirstTb" Grid.Column="2" Grid.Row="2"/>
+        <TextBox x:Name="LastTb" Grid.Column="2" Grid.Row="3"/>
+        <TextBox x:Name="MiddleTb" Grid.Column="2" Grid.Row="4"/>
+        <ComboBox x:Name="GroupTb" Grid.Column="2" Grid.Row="5"/>
+        
+       
         <TextBox x:Name="LoginTb" Grid.Column="2" Grid.Row="6"/>
-        <PasswordBox x:Name="PasswordTb" Grid.Column="2" Grid.Row="7"/>
+        <PasswordBox x:Name="PasswordTb1" Grid.Column="2" Grid.Row="7"/>
+        <PasswordBox x:Name="PasswordTb2" Grid.Column="2" Grid.Row="7"/>
         <Button Click="RegistClk" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8" Width="auto">
             <TextBlock Text="Зарегистрироваться" Foreground="#fff"/>
         </Button>
