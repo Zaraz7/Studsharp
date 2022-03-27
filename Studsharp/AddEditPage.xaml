@@ -40,7 +40,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox x:Name="ComboDiscipline" DisplayMemberPath="Name" Grid.Row="4" Grid.Column="1" Margin="0,10"/>
+        <ComboBox x:Name="ComboDiscipline" DisplayMemberPath="Discipline.Name" Grid.Row="4" Grid.Column="1" Margin="0,10"/>
         <ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Grid.Row="5" Grid.Column="1" Margin="0,8,0,7"/>
         <Button Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="7" Name="BtnSave" Click="BtnSave_Click" Foreground="#fff"/>
         <Button Click="Button_Click">

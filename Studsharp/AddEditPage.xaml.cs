@@ -26,7 +26,10 @@ namespace Studsharp
             sessionTeacher = _sessionTeacher;
 
             InitializeComponent();
-            ComboDiscipline.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
+            var disciplineList = StudyBaseEntities.GetContext().Teacher_Discipline.ToList();
+            disciplineList = disciplineList.Where(a => a.TeacherID == sessionTeacher.ID).ToList();
+
+            ComboDiscipline.ItemsSource = disciplineList;
             GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
         }
 
