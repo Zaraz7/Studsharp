@@ -32,6 +32,8 @@ namespace Studsharp
 
             ComboDiscipline.ItemsSource = disciplineList;
             GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
+
+            ReturnDp.SelectedDate = DateTime.Now;
         }
 
 
@@ -45,9 +47,10 @@ namespace Studsharp
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine((ComboStudent.SelectedItem as Student).ID);
-            Debug.WriteLine((ComboDiscipline.SelectedItem as Teacher_Discipline).ID);
+            Debug.WriteLine(ReturnDp.SelectedDate);
             Debug.WriteLine(EvalTb.Text);
+            Debug.WriteLine((ComboDiscipline.SelectedItem as Teacher_Discipline).ID);
+            Debug.WriteLine((ComboStudent.SelectedItem as Student).ID);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

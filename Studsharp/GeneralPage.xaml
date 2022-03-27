@@ -9,35 +9,28 @@
       Title="GeneralPage">
 
     <Grid>
-        <!--
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions> -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Name="FirstTb" Text="csdcs" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <!-- <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Введите оценку для поиска:" Width="175" TextAlignment="Right"></TextBlock>
-                <TextBox Width="225" Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged"></TextBox>
-            </StackPanel>-->
-            <StackPanel Orientation="Horizontal">
+        <TextBlock Name="FirstTb" Text="csdcs" HorizontalAlignment="Right" Grid.Column="3"/>
+        
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
                 <TextBlock Text="Выберите группу и предмет:" Width="175" TextAlignment="Right"></TextBlock>
                 <ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Margin="5,5,10,5"/>
                 <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected" Grid.ColumnSpan="2" Margin="10,5"/>
             </StackPanel>
-            <DataGrid x:Name="JournalDg" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="JournalDg" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="5" Grid.Row="1">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Время" Binding="{Binding DateReturn}"/>
+                    <DataGridTextColumn Header="Время" Binding="{Binding DateReturn, StringFormat=\{0:dd.MM.yy\}}"/>
                     <DataGridTextColumn Header="Оценка" Binding="{Binding Eval}"/>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Student.FirstName}"/>
                     <DataGridTextColumn Header="Имя" Binding="{Binding Student.LastName}"/>
@@ -48,17 +41,14 @@
             <!--<ComboBox x:Name="GroupCb" DisplayMemberPath="Code" SelectionChanged="GroupCbSelected" Margin="5,5,10,5"/>
             <ComboBox x:Name="DisciplineCb" DisplayMemberPath="Name" Grid.Column="1" SelectionChanged="DisciplineCbSelected" Grid.ColumnSpan="2" Margin="10,5"/>
             -->
-            <Button HorizontalAlignment="Left" Margin="180,0,0,320" Grid.Row="1">
+        <Button Grid.Row="2" Grid.Column="1">
+            <TextBlock Text="Удалить" Foreground="#fff"/>
+        </Button>
+        <Button  Grid.Row="2" Grid.Column="2">
                 <TextBlock Text="Изменить" Foreground="#fff"/>
             </Button>
-            <Button HorizontalAlignment="Left" Margin="20,0,0,320" Grid.Row="1">
-                <TextBlock Text="Удалить" Foreground="#fff"/>
-            </Button>
-            <Button HorizontalAlignment="Left" Margin="20,0,0,320" Grid.Row="1" Click="Button_Click_1">
-                <TextBlock Text="Добавить" Foreground="#fff"/>
-            </Button>
-        </WrapPanel>
-        
-
+        <Button Grid.Row="2" Grid.Column="3" Click="Button_Click_1">
+            <TextBlock Text="Добавить" Foreground="#fff"/>
+        </Button>
     </Grid>
 </Page>
