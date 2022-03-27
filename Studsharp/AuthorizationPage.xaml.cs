@@ -41,10 +41,12 @@ namespace Studsharp
                     return;
                 }
                 var teacher = db.Teacher.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);
+                // Если объект учитель существует мы его переносим в новое окно, в качесвте сессионых данных
                 if (teacher != null)
                 {
                     MessageBox.Show("Вы успешно авторизировались, учитель.");
-                    Manager.MainFrame.Navigate(new GeneralPage());
+                    // вот
+                    Manager.MainFrame.Navigate(new GeneralPage(teacher));
                     return;
                 }
                 var student = db.Student.AsNoTracking().FirstOrDefault(t => t.UserID == user.ID);

@@ -21,9 +21,16 @@ namespace Studsharp
     /// </summary>
     public partial class GeneralPage : Page
     {
-        public GeneralPage()
+        // sessionTeacher - объект в котором содержится его ФИО и ID который можно использовать в Teacher_Discipline db
+        // Например проверка по условию Teacher_Discipline.TeacherID == sessionTeacher.ID выдаст только те предметы, которые учитель преподоёт
+        private Teacher sessionTeacher = new Teacher();
+        public GeneralPage(Teacher _sessionTeacher)
         {
+            sessionTeacher = _sessionTeacher;
+
             InitializeComponent();
+            FirstTb.Text = sessionTeacher.FirstName;
+            
             JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
 
             var allDiscipline = StudyBaseEntities.GetContext().Discipline.ToList();
@@ -78,7 +85,7 @@ namespace Studsharp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPage());
+            Manager.MainFrame.Navigate(new AddEditPage(sessionTeacher));
         }
     }
 }

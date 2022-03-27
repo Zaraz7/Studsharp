@@ -23,7 +23,7 @@ namespace Studsharp
         public RegistrationPage()
         {
             InitializeComponent();
-            COMO.ItemsSource = StudyBaseEntities.GetContext().Student.ToList();
+            
         }
 
         private void AuthoriClk(object sender, RoutedEventArgs e)

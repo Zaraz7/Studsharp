@@ -20,8 +20,11 @@ namespace Studsharp
     /// </summary>
     public partial class AddEditPage : Page
     {
-        public AddEditPage()
+        private Teacher sessionTeacher = new Teacher();
+        public AddEditPage(Teacher _sessionTeacher)
         {
+            sessionTeacher = _sessionTeacher;
+
             InitializeComponent();
             ComboDiscipline.ItemsSource = StudyBaseEntities.GetContext().Discipline.ToList();
             GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
@@ -43,7 +46,7 @@ namespace Studsharp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new GeneralPage());
+            Manager.MainFrame.Navigate(new GeneralPage(sessionTeacher));
         }
     }
 }
