@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Studsharp
 {
@@ -33,10 +34,6 @@ namespace Studsharp
             GroupCb.ItemsSource = StudyBaseEntities.GetContext().Group.ToList();
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void GroupCbSelected(object sender, SelectionChangedEventArgs e)
         {
@@ -45,6 +42,12 @@ namespace Studsharp
             var studentList = StudyBaseEntities.GetContext().Student.ToList();
             studentList = studentList.Where(a => a.GroupCode == (GroupCb.SelectedItem as Group).Code).ToList();
             ComboStudent.ItemsSource = studentList;
+        }
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine((ComboStudent.SelectedItem as Student).ID);
+            Debug.WriteLine((ComboDiscipline.SelectedItem as Teacher_Discipline).ID);
+            Debug.WriteLine(EvalTb.Text);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

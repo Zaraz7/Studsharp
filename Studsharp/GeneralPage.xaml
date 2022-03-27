@@ -24,7 +24,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="FirstTb" Text="csdcs" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Name="FirstTb" Text="csdcs" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <!-- <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Введите оценку для поиска:" Width="175" TextAlignment="Right"></TextBlock>
