@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Studsharp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="GeneralPage">
+      Title="GeneralPage" IsVisibleChanged="PageChanged">
 
     <Grid>
         <Grid.RowDefinitions>

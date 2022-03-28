@@ -51,12 +51,55 @@ namespace Studsharp
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder errors = new StringBuilder();
 
+            byte eval = 0;
+            try
+            {
+                eval = Convert.ToByte(EvalTb.Text);
+                if (eval < 2 || eval > 5)
+                    errors.AppendLine("Оценка должна быть в пределах от 2 до 5");
+            }
+            catch
+            {
+                errors.AppendLine("Оценка должна быть целым числом");
+            }
+            var discipline = ComboDiscipline.SelectedItem as Teacher_Discipline;
+            if (discipline == null)
+                errors.AppendLine("Необходимо выбрать предмет");
+            var student = ComboStudent.SelectedItem as Student;
+            if (student == null)
+                errors.AppendLine("Необходимо выбрать студента");
 
-            Debug.WriteLine(ReturnDp.SelectedDate);
-            Debug.WriteLine(EvalTb.Text);
-            Debug.WriteLine((ComboDiscipline.SelectedItem as Teacher_Discipline).ID);
-            Debug.WriteLine((ComboStudent.SelectedItem as Student).ID);
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+            evaluation.DateReturn = ReturnDp.SelectedDate;
+            evaluation.Eval = eval;
+            evaluation.StudentID = student.ID;
+            evaluation.TDID = discipline.ID;
+            if (evaluation.ID == 0)
+            {
+                Debug.WriteLine("Adding.");
+                StudyBaseEntities.GetContext().Evaluation.Add(evaluation);
+            } else
+            {
+                Debug.WriteLine("Editting");
+
+            }
+            try
+            {
+                StudyBaseEntities.GetContext().SaveChanges();
+                Debug.WriteLine("Secsess");
+                MessageBox.Show("Оценка выставлена.");
+                Manager.MainFrame.Navigate(new GeneralPage(sessionTeacher));
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
 
         private void BtnAbort_Click(object sender, RoutedEventArgs e)

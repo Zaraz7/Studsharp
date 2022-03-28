@@ -87,5 +87,13 @@ namespace Studsharp
         {
             Manager.MainFrame.Navigate(new AddEditPage(sessionTeacher, null));
         }
+
+        private void PageChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible) { 
+            StudyBaseEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            JournalDg.ItemsSource = StudyBaseEntities.GetContext().Evaluation.ToList();
+        }
+        }
     }
 }
